@@ -14,4 +14,7 @@ func main() {
 	picture.Accept(&SpookySkeletonVisitor{})
 	picture.Accept(&SpookyLineVisitor{})
 	picture.Draw()
+
+	//picture.Accept(SPOOKYSKELETON{})
+	//picture.Draw()
 }

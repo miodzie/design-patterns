@@ -1,6 +1,8 @@
 package visitor
 
-import "strings"
+import (
+	"strings"
+)
 
 type GraphicVisitor interface {
 	VisitLine(*Line)
@@ -22,6 +24,36 @@ type SpookyLineVisitor struct {
 
 func (l *SpookyLineVisitor) VisitLine(line *Line) {
 	line.Text = strings.ReplaceAll(line.Text, "_", "~")
+}
+
+const skeletonhehe = `
+░░░░░░░░░░░░▄▐░░░░░░
+░░░░░░▄▄▄░░▄██▄░░░░░
+░░░░░▐▀█▀▌░░░░▀█▄░░░
+░░░░░▐█▄█▌░░░░░░▀█▄░
+░░░░░░▀▄▀░░░▄▄▄▄▄▀▀░
+░░░░▄▄▄██▀▀▀▀░░░░░░░
+░░░█▀▄▄▄█░▀▀░░░░░░░░
+░░░▌░▄▄▄▐▌▀▀▀░░░░░░░
+▄░▐░░░▄▄░█░▀▀░░░░░░░ U HAVE BEEN SPOOKED BY THE
+▀█▌░░░▄░▀█▀░▀░░░░░░░
+░░░░░░░▄▄▐▌▄▄░░░░░░░
+░░░░░░░▀███▀█░▄░░░░░
+░░░░░░▐▌▀▄▀▄▀▐▄░░░░░ SPOOKY SKELETON
+░░░░░▐▀░░░░░░▐▌░░░░░
+░░░░░░█░░░░░░░░█░░░░
+░░░░░▐▌░░░░░░░░░█░░░
+░░░░░█░░░░░░░░░░▐▌░░ `
+
+type SPOOKYSKELETON struct {
+}
+
+func (S SPOOKYSKELETON) VisitLine(line *Line) {
+	line.Text = skeletonhehe
+}
+
+func (S SPOOKYSKELETON) VisitText(text *Text) {
+	text.Text = skeletonhehe
 }
 
 /////////////////////////////////////////
