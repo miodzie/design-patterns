@@ -6,11 +6,12 @@ import (
 
 func main() {
 	picture := &Picture{}
-	picture.Add(&Line{})
+	picture.Add(NewLine())
 	picture.Add(&Text{Text: "howdy doody\n"})
-	picture.Add(&Line{})
+	picture.Add(NewLine())
 	picture.Draw()
 
 	picture.Accept(&SpookySkeletonVisitor{})
+	picture.Accept(&SpookyLineVisitor{})
 	picture.Draw()
 }

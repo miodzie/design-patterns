@@ -8,7 +8,7 @@ type GraphicVisitor interface {
 }
 
 type SpookySkeletonVisitor struct {
-	noop
+	noopVisitor
 }
 
 func (t *SpookySkeletonVisitor) VisitText(text *Text) {
@@ -16,7 +16,17 @@ func (t *SpookySkeletonVisitor) VisitText(text *Text) {
 	text.Text += " - VISITED BY THE SPOOKY SKELETON\n"
 }
 
-type noop struct{}
+type SpookyLineVisitor struct {
+	noopVisitor
+}
 
-func (n noop) VisitLine(*Line) {}
-func (n noop) VisitText(*Text) {}
+func (l *SpookyLineVisitor) VisitLine(line *Line) {
+	line.Text = strings.ReplaceAll(line.Text, "_", "~")
+}
+
+/////////////////////////////////////////
+
+type noopVisitor struct{}
+
+func (n noopVisitor) VisitLine(*Line) {}
+func (n noopVisitor) VisitText(*Text) {}
