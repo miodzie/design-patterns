@@ -15,6 +15,7 @@ func main() {
 	picture.Accept(&SpookyLineVisitor{})
 	picture.Draw()
 
+	// hehehe
 	//picture.Accept(SPOOKYSKELETON{})
 	//picture.Draw()
 }
